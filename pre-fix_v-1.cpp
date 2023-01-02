@@ -1,5 +1,3 @@
-%%writefile prefix.cpp
-
 #include <iostream>
 #include <string>
 

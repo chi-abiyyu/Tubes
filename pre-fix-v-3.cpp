@@ -49,8 +49,8 @@ int main()
 loop_start:
     cout << "Get a Room\n";
 
-    cout << "Mulai (Yes)\n";
-    cout << "Keluar (No)\n";
+    cout << "Mulai (Y)\n";
+    cout << "Keluar (N)\n";
     cout << ">>> ";
     cin >> start;
 

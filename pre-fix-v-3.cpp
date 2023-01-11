@@ -319,7 +319,7 @@ loop_start:
             // Isian Formulir
             cout << "Buat Pesanan\n";
             // Loop untuk form awal hotel
-        loop_form_hotel:
+        
             // Inputan untuk user
             getchar();
             cout << "Masukan Nama : ";
@@ -344,6 +344,7 @@ loop_start:
             cout << "Waktu Check Out (HH:MM): ";
             getline(cin, waktu_check_out);
 
+            loop_form_hotel:
             cout << "Pilihan Hotel\n";
             cout << "1. " + hotel_1 << "\n"
                  << "2. " + hotel_2 << "\n"
@@ -1037,7 +1038,6 @@ loop_start:
                 cout << "Pilihan tidak valid\n";
                 goto loop_form_hotel;
             }
-            cout << "___________________________________\n";
         }
         break;
         // Bantuan

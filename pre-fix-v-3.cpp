@@ -111,14 +111,15 @@ loop_start:
                 string fasilitas_kamar[3] =
                     {
                         "\n 1.Free Wifi\n 2. Kamar Mandi Dalam\n 3. Air Conditioner (Pendingin Ruangan)\n 4. Televisi\n 5. Layanan Resepsionis 24 Jam\n 6. Single Bed\n 7. Parkir",
-                        "\n 1.Free Wifi\n 2. Kamar Mandi Dalam\n 3. Air Conditioner (Pendingin Ruangan)\n 4. Televisi\n 5.Kunci Otomatis\n 6. Layanan Resepsionis   24 Jam\n 7. Parkir\n 8. Free breakfast\n 9. Single Bed / Doubel Bed\n 10. Lemari",
+                        "\n 1.Free Wifi\n 2. Kamar Mandi Dalam\n 3. Air Conditioner (Pendingin Ruangan)\n 4. Televisi\n 5. Kunci Otomatis\n 6. Layanan Resepsionis   24 Jam\n 7. Parkir\n 8. Free breakfast\n 9. Single Bed / Doubel Bed\n 10. Lemari",
                         "\n 1.Free Wifi\n 2. Kamar Mandi Dalam\n 3. Air Conditioner (Pendingin Ruangan) \n 4. Televisi\n 5.Kunci Otomatis\n 6. Layanan Resepsionis   24 Jam\n 7. Housekeeping Harian\n 8. Free breakfast\n 9. Bathub\n 10. Single Bed / Doubel Bed\n 11. Lemari\n 11. Parkir\n 12. Office Room"};
 
                 // Dibawah ini untuk membuat menu daftar menu dari pilihan hotel permen
                 cout << "1. Daftar Harga\n";         // ini buat if == 1
                 cout << "2. Fasilitas Kamar\n";      // if == 2
-                cout << "3. Kembali Ke Menu Awal\n"; // if == 3
-                cout << "Pilihan Anda (1-3) : ";
+                cout << "3. Alamat Hotel\n";         // if == 3
+                cout << "4. kembali Ke Menu Awal\n";
+                cout << "Pilihan Anda (1-4) : ";
                 cin >> pilihan_menu_hotel;
 
                 // Dibawah ini untuk pilihan dari menu diatas
@@ -144,7 +145,12 @@ loop_start:
                     }
                     goto loop_menu_estate;
                 }
-                else if (pilihan_menu_hotel == 3)
+                else if(pilihan_menu_hotel == 3)
+                {
+                    cout << "Alamat : Karangtengah, Kec. Baturaden, Kabupaten BanyumasJawa Tengah" << endl;
+                    goto loop_menu_estate;
+                }
+                else if (pilihan_menu_hotel == 4)
                 {
                     goto loop_menu_hotel;
                 }
@@ -176,15 +182,16 @@ loop_start:
                 // Dibawah ini adalah kode untuk membuat array dengan 3 string untuk fasilitas_kamar
                 string fasilitas_kamar[3] =
                     {
-                        "\n 1.Free Wifi\n 2. Kamar Mandi Dalam\n 3. AC\n 4. Televisi\n 5. Layanan Resepsionis 24 Jam\n 6. Single Bed \n 7. Parkir\n 8. Ketel Listrik\n ",
+                        "\n 1. Wifi\n 2. Kamar Mandi Dalam\n 3. AC\n 4. Televisi\n 5. Layanan Resepsionis 24 Jam\n 6. Single Bed \n 7. Parkir\n 8. Ketel Listrik\n ",
                         "\n 1. Wifi\n 2. Dapur\n 3. Layanan tata graha\n 4. Parkir\n 5. Cctv\n 6. Resepsi\n 7. Pemadam Api\n 8. Ac\n 9. Tv\n 10. Single bed / doubel bed\n 11. Ketel Listrik\n ",
                         "\n 1. Wifi\n 2. Parkir\n 3. Cctv \n 4. Ruang Pesta\n 5. Ruang Konferensi \n 6. 24/7  Checkin\n 7. Layanan Tata graha harian\n 8. Ketel listrik\n 9. Pemadam Api\n 9. Tv\n 10. Bathub\n 11. Ac\n 12. Area tempat duduk\n 13. Tempat tidur king size / Doubel bed\n 14. Free Breakfast\n "};
 
                 // Dibawah ini untuk membuat menu daftar menu dari pilihan hotel permen
                 cout << "1. Daftar Harga\n";         // ini buat if == 1
                 cout << "2. Fasilitas Kamar\n";      // if == 2
-                cout << "3. Kembali Ke Menu Awal\n"; // if == 2
-                cout << "Pilihan Anda (1-3) : ";
+                cout << "3. Alamat Hotel\n";         // if == 3
+                cout << "4. kembali Ke Menu Awal\n";
+                cout << "Pilihan Anda (1-4) : ";
                 cin >> pilihan_menu_hotel;
 
                 // Dibawah ini untuk pilihan dari menu diatas
@@ -208,6 +215,11 @@ loop_start:
                         cout << "Fasilitas Kamar: " << fasilitas_kamar[i] << endl;
                         cout << "\n";
                     }
+                    goto loop_menu_royale;
+                }
+                else if(pilihan_menu_hotel == 3)
+                {
+                    cout << "Alamat : Rempoah, Kec. Baturaden, Kabupaten Banyumas, Jawa Tengah";
                     goto loop_menu_royale;
                 }
                 else if (pilihan_menu_hotel == 3)
@@ -247,8 +259,9 @@ loop_start:
                 // Dibawah ini untuk membuat menu daftar menu dari pilihan hotel permen
                 cout << "1. Daftar Harga\n";         // ini buat if == 1
                 cout << "2. Fasilitas Kamar\n";      // if == 2
-                cout << "3. Kembali Ke Menu Awal\n"; // if == 2
-                cout << "Pilihan Anda (1-3) : ";
+                cout << "3. Alamat Hotel\n";         // if == 3
+                cout << "4. kembali Ke Menu Awal\n";
+                cout << "Pilihan Anda (1-4) : ";
                 cin >> pilihan_menu_hotel;
 
                 // Dibawah ini untuk pilihan dari menu diatas
@@ -274,7 +287,12 @@ loop_start:
                     }
                     goto loop_menu_summit;
                 }
-                else if (pilihan_menu_hotel == 3)
+                else if(pilihan_menu_hotel == 3)
+                {
+                    cout << "Alamat : Dusun I Desa, Kemutug Lor, Kec. Baturaden, Kabupaten Banyumas, Jawa Tengah" << endl;
+                    goto loop_menu_summit;
+                }
+                else if (pilihan_menu_hotel == 4)
                 {
                     goto loop_menu_hotel;
                 }
@@ -797,10 +815,14 @@ loop_start:
             else if (pilihan_hotel == 3)
             {
                 cout << "Hotel : " << hotel_3 << "\n";
-            loop_form_kamar_3:
+                loop_form_kamar_3_1:
                 string jenis_1 = "Standar";
                 string jenis_2 = "Deluxe";
                 string jenis_3 = "Suite";
+
+                string bayar_1 = "Cash";
+                string bayar_2 = "Bank";
+
 
                 int harga_1 = 200000;
                 int harga_2 = 500000;
@@ -815,102 +837,15 @@ loop_start:
                 cout << "Masukan Pilihan : ";
                 cin >> pilihan_kamar;
 
-                if (pilihan_hotel == 1)
+                if (pilihan_kamar == 1)
                 {
-                    cout << "Hotel : " << hotel_1 << "\n";
-                loop_form_kamar_3_1:
-                    string jenis_1 = "Standar";
-                    string jenis_2 = "Deluxe";
-                    string jenis_3 = "Suite";
+                    cout << "Kamar : " << jenis_1 << endl;
+                    cout << "Harga per kamar : " << harga_1 << endl;
+                    cout << "Total : " << total_harga(jumlah, harga_1, lama_inap) << endl;
+                    int total = total_harga(jumlah, harga_1, lama_inap);
 
-                    int harga_1 = 200000;
-                    int harga_2 = 500000;
-                    int harga_3 = 800000;
-
-                    string bayar_1 = "Cash";
-                    string bayar_2 = "Bank";
-
-                    int pilihan_kamar;
-
-                    cout << "Jenis Kamar\n";
-                    cout << "1. " + jenis_1 << "\n"
-                         << "2. " + jenis_2 << "\n"
-                         << "3. " + jenis_3 << "\n";
-                    cout << "Masukan Pilihan : ";
-                    cin >> pilihan_kamar;
-
-                    if (pilihan_kamar == 1)
-                    {
-                        cout << "Kamar : " << jenis_1 << endl;
-                        cout << "Harga per kamar : " << harga_1 << endl;
-                        cout << "Total : " << total_harga(jumlah, harga_1, lama_inap) << endl;
-                        int total = total_harga(jumlah, harga_1, lama_inap);
-
-                        // pilihan pembayaran
-                        cout << "Pilih Pembayaran" << endl;
-                        cout << "1. " + bayar_1 << "\n";
-                        cout << "2. " + bayar_2 << "\n";
-                        cout << "Masukan Pilihan : ";
-                        cin >> pilih_bayar;
-                        string bank_bri = "BRI";
-                        string bank_bni = "BNI";
-                        string bank_bca = "BCA";
-                        string bank_bsi = "BSI";
-                        if (pilih_bayar == 1)
-                        {
-                            string bayar = bayar_1;
-                            cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_1, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
-                        }
-                        else if (pilih_bayar == 2)
-                        {
-                            int pilih_bank;
-                        loop_bank_3_1:
-                            cout << "Pilih jenis bank : \n";
-                            cout << "1. " + bank_bri << endl;
-                            cout << "2. " + bank_bni << endl;
-                            cout << "3. " + bank_bca << endl;
-                            cout << "4. " + bank_bsi << endl;
-                            cout << "Masukan Pilihan : ";
-                            cin >> pilih_bank;
-                            if (pilih_bank == 1)
-                            {
-                                string bayar = bank_bri;
-                                cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_1, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
-                            }
-                            else if (pilih_bank == 2)
-                            {
-                                string bayar = bank_bni;
-                                cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_1, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
-                            }
-                            else if (pilih_bank == 3)
-                            {
-                                string bayar = bank_bca;
-                                cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_1, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
-                            }
-                            else if (pilih_bank == 4)
-                            {
-                                string bayar = bank_bsi;
-                                cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_1, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
-                            }
-                            else
-                            {
-                                cout << "Pilihan anda tidak valid" << endl;
-                                goto loop_bank_3_1;
-                            }
-                        }
-                    }
-                }
-                else if (pilihan_kamar == 2)
-                {
-                    cout << "Kamar : " << jenis_2 << endl;
-                    cout << "Harga per kamar : " << harga_2 << endl;
-                    cout << "Total : " << total_harga(jumlah, harga_2, lama_inap) << endl;
-                    int total = total_harga(jumlah, harga_2, lama_inap);
-
-                    string bayar_1 = "Cash";
-                    string bayar_2 = "Bank";
-
-                    // pilihan pembayaran
+                // pilihan pembayaran
+                loop_bayar_3_1 :
                     cout << "Pilih Pembayaran" << endl;
                     cout << "1. " + bayar_1 << "\n";
                     cout << "2. " + bayar_2 << "\n";
@@ -923,7 +858,74 @@ loop_start:
                     if (pilih_bayar == 1)
                     {
                         string bayar = bayar_1;
-                        cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_2, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                        cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_1, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                    }
+                    else if (pilih_bayar == 2)
+                    {
+                        int pilih_bank;
+                    loop_bank_3_1:
+                        cout << "Pilih jenis bank : \n";
+                        cout << "1. " + bank_bri << endl;
+                        cout << "2. " + bank_bni << endl;
+                        cout << "3. " + bank_bca << endl;
+                        cout << "4. " + bank_bsi << endl;
+                        cout << "Masukan Pilihan : ";
+                        cin >> pilih_bank;
+                        if (pilih_bank == 1)
+                        {
+                            string bayar = bank_bri;
+                            cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_1, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                        }
+                        else if (pilih_bank == 2)
+                        {
+                            string bayar = bank_bni;
+                            cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_1, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                        }
+                        else if (pilih_bank == 3)
+                        {
+                            string bayar = bank_bca;
+                            cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_1, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                        }
+                        else if (pilih_bank == 4)
+                        {
+                            string bayar = bank_bsi;
+                            cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_1, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                        }
+                        else
+                        {
+                            cout << "Pilihan anda tidak valid" << endl;
+                            goto loop_bank_3_1;
+                        }
+                    }
+                    else
+                    {
+                        cout << "Pilihan anda tidak valid" << endl;
+                        goto loop_bayar_3_1;
+                    }
+                }
+                else if (pilihan_kamar == 2)
+                {
+                    cout << "Kamar : " << jenis_2 << endl;
+                    cout << "Harga per kamar : " << harga_2 << endl;
+                    cout << "Total : " << total_harga(jumlah, harga_2, lama_inap) << endl;
+                    int total = total_harga(jumlah, harga_2, lama_inap);
+
+                // pilihan pembayaran
+                loop_bayar_3_2:
+                    cout << "Pilih Pembayaran" << endl;
+                    cout << "1. " + bayar_1 << "\n";
+                    cout << "2. " + bayar_2 << "\n";
+                    cout << "Masukan Pilihan : ";
+                    cin >> pilih_bayar;
+                    string bank_bri = "BRI";
+                    string bank_bni = "BNI";
+                    string bank_bca = "BCA";
+                    string bank_bsi = "BSI";
+
+                    if (pilih_bayar == 1)
+                    {
+                        string bayar = bayar_1;
+                        cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_2, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
                     }
                     else if (pilih_bayar == 2)
                     {
@@ -939,28 +941,33 @@ loop_start:
                         if (pilih_bank == 1)
                         {
                             string bayar = bank_bri;
-                            cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_2, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                            cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_2, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
                         }
                         else if (pilih_bank == 2)
                         {
                             string bayar = bank_bni;
-                            cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_2, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                            cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_2, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
                         }
                         else if (pilih_bank == 3)
                         {
                             string bayar = bank_bca;
-                            cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_2, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                            cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_2, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
                         }
                         else if (pilih_bank == 4)
                         {
                             string bayar = bank_bsi;
-                            cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_2, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                            cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_2, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
                         }
                         else
                         {
                             cout << "Pilihan anda tidak valid" << endl;
                             goto loop_bank_3_2;
                         }
+                    }
+                    else
+                    {
+                        cout << "Pilih tidak valid" << endl;
+                        goto loop_bayar_3_2;
                     }
                 }
                 else if (pilihan_kamar == 3)
@@ -970,10 +977,8 @@ loop_start:
                     cout << "Total : " << total_harga(jumlah, harga_3, lama_inap) << endl;
                     int total = total_harga(jumlah, harga_3, lama_inap);
 
-                    string bayar_1 = "Cash";
-                    string bayar_2 = "Bank";
-
-                    // pilihan pembayaran
+                // pilihan pembayaran
+                loop_bayar_3_3:
                     cout << "Pilih Pembayaran" << endl;
                     cout << "1. " + bayar_1 << "\n";
                     cout << "2. " + bayar_2 << "\n";
@@ -986,7 +991,7 @@ loop_start:
                     if (pilih_bayar == 1)
                     {
                         string bayar = bayar_1;
-                        cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_3, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                        cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_3, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
                     }
                     else if (pilih_bayar == 2)
                     {
@@ -998,26 +1003,26 @@ loop_start:
                         cout << "3. " + bank_bca << endl;
                         cout << "4. " + bank_bsi << endl;
                         cout << "Masukan Pilihan : ";
-                        cin >> pilih_bank;
+                        cin >> pilih_bayar;
                         if (pilih_bank == 1)
                         {
                             string bayar = bank_bri;
-                            cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_3, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                            cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_3, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
                         }
                         else if (pilih_bank == 2)
                         {
                             string bayar = bank_bni;
-                            cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_3, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                            cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_3, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
                         }
                         else if (pilih_bank == 3)
                         {
                             string bayar = bank_bca;
-                            cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_3, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                            cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_3, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
                         }
                         else if (pilih_bank == 4)
                         {
                             string bayar = bank_bsi;
-                            cout << print_invoice(nama, nomer_hp, email, hotel_3, jenis_3, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
+                            cout << print_invoice(nama, nomer_hp, email, hotel_2, jenis_3, lama_inap, check_in, waktu_check_in, check_out, waktu_check_out, total, bayar);
                         }
                         else
                         {
@@ -1025,12 +1030,18 @@ loop_start:
                             goto loop_bank_3_3;
                         }
                     }
+                    else
+                    {
+                        cout << "Pilihan anda tidak valid" << endl;
+                        goto loop_bayar_3_3;
+                    }
                 }
                 else
                 {
                     cout << "Kamar tidak valid\n";
-                    goto loop_form_kamar_3_1;
+                    goto loop_form_kamar_2_1;
                 }
+
             }
             // Jika Outputan salah dan langsung menuju loop pilihan hotel
             else
@@ -1047,10 +1058,10 @@ loop_start:
             int pilih_faq;
         loop_bantuan:
             cout << "Bantuan\n";
-            cout << "1. Hubungi";
-            cout << "2. FAQ";
-            cout << "3. Syarat & kententuan";
-            cout << "4. Keluar";
+            cout << "1. Hubungi\n";
+            cout << "2. FAQ\n";
+            cout << "3. Syarat & kententuan\n";
+            cout << "4. Keluar\n";
             cout << "Masukan pilihan anda : ";
             cin >> pilih_bantuan;
 
@@ -1108,16 +1119,28 @@ loop_start:
             }
             else if (pilih_bantuan == 3)
             {
-                cout << "";
+                cout << "Syarat dan Ketentuan Penggunaan Aplikasi Get a Room" << endl;
+                cout << "1. Pengguna harus berusia 18 tahun atau lebih untuk dapat menggunakan aplikasi ini." << endl;
+                cout << "2. Pengguna harus memberikan informasi yang benar dan valid pada saat pendaftaran dan pemesanan." << endl;
+                cout << "3. Pengguna bertanggung jawab atas keamanan dan kerahasiaan informasi yang dimasukkan ke dalam aplikasi." << endl;
+                cout << "4. Pengguna diharuskan untuk membayar sebelum melakukan pemesanan kamar." << endl;
+                cout << "5. Pembatalan pemesanan harus dilakukan 24 jam sebelum jadwal check-in." << endl;
+                cout << "6. Aplikasi ini tidak bertanggung jawab atas kerusakan atau kehilangan barang pribadi pengguna selama menginap." << endl;
+                cout << "7. Pengguna harus mematuhi peraturan hotel yang berlaku saat menginap." << endl;
+                cout << "8. Pengguna diharuskan untuk menghormati privasi tamu lain yang menginap di hotel yang sama." << endl;
+                cout << "9. Pengguna setuju untuk tidak melakukan aktivitas ilegal atau menyalahi hukum saat menggunakan aplikasi ini." << endl;
+                cout << "10. Aplikasi Get a Room berhak untuk melakukan perubahan syarat dan ketentuan ini sewaktu-waktu tanpa pemberitahuan terlebih dahulu." << endl;
+                
+                goto loop_bantuan;
             }
             else if (pilih_bantuan == 4)
             {
-                cout << "";
+                goto loop_menu;
             }
             else
             {
-                cout << "";
-                cout << "";
+                cout << "Pilihan anda tidak valid";
+                goto loop_bantuan;
             }
         }
         break;

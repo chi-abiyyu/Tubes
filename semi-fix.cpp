@@ -8,19 +8,6 @@ int total_harga(int jumlah, int harga, int inap)
 {
     return jumlah * harga * inap;
 }
-
-// Fungsi ini untuk mencetak tixet (belum selesai)
-string print_tiket(string nama, int room, string cek_in, string cek_out)
-{
-    cout << "--------------TIKET HOTEL--------------\n";
-    cout << "Nama Pemesan ; " << nama << endl;
-    cout << "Nomer Kamar : " << room << endl;
-    cout << "Tanggal Cek In : " << cek_in << endl;
-    cout << "Tanggal Cek Out : " << cek_out << endl;
-    cout << "__________________________________________________\n";
-    cout << "                 Terimakasih ";
-}
-
 // Fungsi ini untuk mencetak invoice pemesanan
 string print_invoice(string nama, string nomer_hp, string email, string hotel, string jenis_kamar, int jumlah_kamar, int inap, string check_in, string waktu_in, string check_out, string waktu_out, int total, string bayar)
 {
@@ -414,15 +401,17 @@ loop_start:
                         cout << "Waktu Check Out (HH:MM): "; // Jam Untuk Check out
                         getline(cin, waktu_check_out);
 
-                        cout << "Harga per kamar : " << harga_1 << endl;
+                        cout << "Harga per kamar : " << harga_1 << endl; //Menampilkan harga kamar standar
                         cout << "Total : " << total_harga(jumlah, harga_1, lama_inap) << endl;
                         int total = total_harga(jumlah, harga_1, lama_inap);
 
                         // pilihan pembayaran
+                        loop_bayar_1_1:
                         cout << "Pilih Pembayaran" << endl;
-                        cout << "1. " + bayar_1 << "\n";
-                        cout << "2. " + bayar_2 << "\n";
-                        cout << "Masukan Pilihan : ";
+                        cout << "1. " + bayar_1 << "\n";   //bayar_1 = Cash
+                        cout << "2. " + bayar_2 << "\n";   //bayar_2 = Bank
+                        
+                        cout << "Masukan Pilihan (1-2) : ";
                         cin >> pilih_bayar;
                         string bank_bri = "BRI";
                         string bank_bni = "BNI";
@@ -437,8 +426,8 @@ loop_start:
                         {
                             int pilih_bank;
                         loop_bank:
-                            cout << "Pilih jenis bank : \n";
-                            cout << "1. " + bank_bri << endl;
+                            cout << "Pilih jenis bank : \n"; //Menu pilihan bank
+                            cout << "1. " + bank_bri << endl; 
                             cout << "2. " + bank_bni << endl;
                             cout << "3. " + bank_bca << endl;
                             cout << "4. " + bank_bsi << endl;
@@ -473,6 +462,11 @@ loop_start:
                                 cout << "Pilihan anda tidak valid" << endl;
                                 goto loop_bank;
                             }
+                        }
+                        else
+                        {
+                            cout << "Pilihan anda tidak valid" << endl;
+                            goto loop_bayar_1_1;
                         }
                     }
                     else
@@ -509,9 +503,11 @@ loop_start:
                         int total = total_harga(jumlah, harga_2, lama_inap);
 
                         // pilihan pembayaran
+                        loop_bayar_1_2 :
                         cout << "Pilih Pembayaran" << endl;
                         cout << "1. " + bayar_1 << "\n";
                         cout << "2. " + bayar_2 << "\n";
+                        
                         cout << "Masukan Pilihan : ";
                         cin >> pilih_bayar;
                         string bank_bri = "BRI";
@@ -532,7 +528,7 @@ loop_start:
                             cout << "2. " + bank_bni << endl;
                             cout << "3. " + bank_bca << endl;
                             cout << "4. " + bank_bsi << endl;
-                            cout << "Masukan Pilihan : ";
+                            cout << "Masukan Pilihan (1-2) : ";
                             cin >> pilih_bank;
                             if (pilih_bank == 1)
                             {
@@ -563,6 +559,11 @@ loop_start:
                                 cout << "Pilihan anda tidak valid" << endl;
                                 goto loop_bank1;
                             }
+                        }
+                        else
+                        {
+                            cout << "Pilihan anda tidak valid" << endl;
+                            goto loop_bayar_1_2;
                         }
                     }
                     else
@@ -599,10 +600,12 @@ loop_start:
                         int total = total_harga(jumlah, harga_3, lama_inap);
 
                         // pilihan pembayaran
+                        loop_bayar_1_3 :
                         cout << "Pilih Pembayaran" << endl;
                         cout << "1. " + bayar_1 << "\n";
                         cout << "2. " + bayar_2 << "\n";
-                        cout << "Masukan Pilihan : ";
+                        
+                        cout << "Masukan Pilihan (1-2) : ";
                         cin >> pilih_bayar;
                         string bank_bri = "BRI";
                         string bank_bni = "BNI";
@@ -720,11 +723,12 @@ loop_start:
                         int total = total_harga(jumlah, harga_1, lama_inap);
 
                     // pilihan pembayaran
-                    loop_bayar_1:
+                    loop_bayar_2_1:
                         cout << "Pilih Pembayaran" << endl;
                         cout << "1. " + bayar_1 << "\n";
                         cout << "2. " + bayar_2 << "\n";
-                        cout << "Masukan Pilihan : ";
+                        
+                        cout << "Masukan Pilihan (1-2) : ";
                         cin >> pilih_bayar;
                         string bank_bri = "BRI";
                         string bank_bni = "BNI";
@@ -779,7 +783,7 @@ loop_start:
                         else
                         {
                             cout << "Pilihan anda tidak valid" << endl;
-                            goto loop_bayar_1;
+                            goto loop_bayar_2_1;
                         }
                     }
                     else
@@ -816,11 +820,12 @@ loop_start:
                         int total = total_harga(jumlah, harga_2, lama_inap);
 
                     // pilihan pembayaran
-                    loop_bayar_2:
+                    loop_bayar_2_2 :
                         cout << "Pilih Pembayaran" << endl;
                         cout << "1. " + bayar_1 << "\n";
                         cout << "2. " + bayar_2 << "\n";
-                        cout << "Masukan Pilihan : ";
+                        
+                        cout << "Masukan Pilihan (1-2) : ";
                         cin >> pilih_bayar;
                         string bank_bri = "BRI";
                         string bank_bni = "BNI";
@@ -876,7 +881,7 @@ loop_start:
                         else
                         {
                             cout << "Pilih tidak valid" << endl;
-                            goto loop_bayar_2;
+                            goto loop_bayar_2_2;
                         }
                     }
                     else
@@ -913,11 +918,12 @@ loop_start:
                         int total = total_harga(jumlah, harga_3, lama_inap);
 
                     // pilihan pembayaran
-                    loop_bayar_3:
+                    loop_bayar_2_3:
                         cout << "Pilih Pembayaran" << endl;
                         cout << "1. " + bayar_1 << "\n";
                         cout << "2. " + bayar_2 << "\n";
-                        cout << "Masukan Pilihan : ";
+                       
+                        cout << "Masukan Pilihan (1-2) : ";
                         cin >> pilih_bayar;
                         string bank_bri = "BRI";
                         string bank_bni = "BNI";
@@ -972,7 +978,7 @@ loop_start:
                         else
                         {
                             cout << "Pilihan anda tidak valid" << endl;
-                            goto loop_bayar_3;
+                            goto loop_bayar_2_3;
                         }
                     }
                     else
@@ -1009,7 +1015,7 @@ loop_start:
                 cout << "1. " + jenis_1 << "\n"
                      << "2. " + jenis_2 << "\n"
                      << "3. " + jenis_3 << "\n";
-                cout << "Masukan Pilihan : ";
+                cout << "Masukan Pilihan  : ";
                 cin >> pilihan_kamar;
 
                 if (pilihan_kamar == 1)
@@ -1044,6 +1050,7 @@ loop_start:
                         cout << "Pilih Pembayaran" << endl;
                         cout << "1. " + bayar_1 << "\n";
                         cout << "2. " + bayar_2 << "\n";
+                        
                         cout << "Masukan Pilihan : ";
                         cin >> pilih_bayar;
                         string bank_bri = "BRI";
@@ -1315,6 +1322,9 @@ loop_start:
                 cout << "______________________________________\n";
                 goto loop_form_hotel;
             }
+            cout << "------------------------------------------------\n";
+            cout << "         Terimakasih Telah Berkunjung\n";
+            cout << " ------------------------------------------------\n";
         }
         break;
         // Bantuan
@@ -1323,7 +1333,7 @@ loop_start:
             int pilih_bantuan;
             int pilih_faq;
         loop_bantuan:
-            cout << "__________________________________________________\n";
+            cout << "\n__________________________________________________\n";
             cout << "--------------------Bantuan-----------------------\n";
             cout << "1. Hubungi\n";
             cout << "2. FAQ\n";
@@ -1439,6 +1449,7 @@ loop_start:
         {
             cout << "---------------------------------------------------\n";
             cout << "         Terimakasih Telah Berkunjung\n";
+            cout << "---------------------------------------------------\n";
             return 0;
         }
         break;

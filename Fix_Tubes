@@ -45,11 +45,15 @@ string print_invoice(string nama, string nomer_hp, string email, string hotel, s
     {
         cout << "Nomer VA : 8888850002224745" << endl;
     }
-    else
-    {
-    }
+
     cout << "--------------------------------\n";
     cout << "================================\n";
+
+    cout << endl;
+    cout << "_______________________________\n";
+    cout << "Catatan Pesanan : \n";
+    cout << " Harap saat melakukan check in \n untuk melampirkan Invoice dan \n Bukti Pembayaran\n";
+    cout << "_______________________________\n\n";
     return invoice;
 }
 
@@ -129,10 +133,10 @@ loop_start:
                         "\n 1.Free Wifi\n 2. Kamar Mandi Dalam\n 3. Air Conditioner (Pendingin Ruangan) \n 4. Televisi\n 5.Kunci Otomatis\n 6. Layanan Resepsionis   24 Jam\n 7. Housekeeping Harian\n 8. Free breakfast\n 9. Bathub\n 10. Doubel Bed\n 11. Lemari\n 11. Parkir\n 12. Office Room"};
 
                 // Dibawah ini untuk membuat menu daftar menu dari pilihan hotel permen
-                cout << "1. Daftar Harga\n";    // ini buat if == 1
-                cout << "2. Fasilitas Kamar\n"; // else if == 2
-                cout << "3. Alamat Hotel\n";    // else if == 3
-                cout << "4. kembali Ke Menu Awal\n"; // else if == 4
+                cout << "1. Daftar Harga\n";          // ini buat if == 1
+                cout << "2. Fasilitas Kamar\n";       // else if == 2
+                cout << "3. Alamat Hotel\n";          // else if == 3
+                cout << "4. Kembali Ke Menu Hotel\n"; // else if == 4
                 cout << "Pilihan Anda (1-4) : ";
                 cin >> pilihan_menu_hotel;
 
@@ -201,10 +205,10 @@ loop_start:
                         "\n 1. Wifi\n 2. Parkir\n 3. Cctv \n 4. Ruang Pesta\n 5. Ruang Konferensi \n 6. 24/7  Checkin\n 7. Layanan Tata graha harian\n 8. Ketel listrik\n 9. Pemadam Api\n 9. Tv\n 10. Bathub\n 11. Ac\n 12. Area tempat duduk\n 13. Tempat tidur king size / Doubel bed\n 14. Free Breakfast\n "};
 
                 // Dibawah ini untuk membuat menu daftar menu dari pilihan hotel permen
-                cout << "1. Daftar Harga\n";    // ini buat if == 1
-                cout << "2. Fasilitas Kamar\n"; // else if == 2
-                cout << "3. Alamat Hotel\n";    // else if == 3
-                cout << "4. kembali Ke Menu Awal\n"; //else if == 4
+                cout << "1. Daftar Harga\n";          // ini buat if == 1
+                cout << "2. Fasilitas Kamar\n";       // else if == 2
+                cout << "3. Alamat Hotel\n";          // else if == 3
+                cout << "4. Kembali Ke Menu Hotel\n"; // else if == 4
                 cout << "Pilihan Anda (1-4) : ";
                 cin >> pilihan_menu_hotel;
 
@@ -272,10 +276,10 @@ loop_start:
                         "\n 1. Wifi\n 2. Parkir\n 3. Cctv\n 4. Ruang Pesta\n 5. Ruang Konferensi\n 6. 24/7  Checkin\n 7. Layanan Tata graha harian\n 8. Ketel listrik\n 9. Pemadam Ac\n 10. Tv\n 11. Bathub\n 12. Ac\n 13. Area tempat duduk\n 14. Tempat tidur king size / Doubel bed\n 15. Free Breakfast\n 16. Kulkas Mini\n 17. Balkon\n "};
 
                 // Dibawah ini untuk membuat menu daftar menu dari pilihan hotel permen
-                cout << "1. Daftar Harga\n";         // ini buat if == 1
-                cout << "2. Fasilitas Kamar\n";      // else if == 2
-                cout << "3. Alamat Hotel\n";         // else if == 3
-                cout << "4. kembali Ke Menu Awal\n"; // else if == 4
+                cout << "1. Daftar Harga\n";          // ini buat if == 1
+                cout << "2. Fasilitas Kamar\n";       // else if == 2
+                cout << "3. Alamat Hotel\n";          // else if == 3
+                cout << "4. Kembali Ke Menu Hotel\n"; // else if == 4
                 cout << "Pilihan Anda (1-4) : ";
                 cin >> pilihan_menu_hotel;
 
@@ -391,8 +395,8 @@ loop_start:
                 int pilihan_kamar;
 
                 cout << "Jenis Kamar\n";
-                cout << "1. " + jenis_1 << "\n" // if == 1
-                     << "2. " + jenis_2 << "\n" // else if == 2
+                cout << "1. " + jenis_1 << "\n"  // if == 1
+                     << "2. " + jenis_2 << "\n"  // else if == 2
                      << "3. " + jenis_3 << "\n"; // else if == 3
                 cout << "Masukan Pilihan : ";
                 cin >> pilihan_kamar;

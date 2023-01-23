@@ -132,7 +132,7 @@ loop_start:
                 cout << "1. Daftar Harga\n";    // ini buat if == 1
                 cout << "2. Fasilitas Kamar\n"; // else if == 2
                 cout << "3. Alamat Hotel\n";    // else if == 3
-                cout << "4. kembali Ke Menu Awal\n";
+                cout << "4. kembali Ke Menu Awal\n"; // else if == 4
                 cout << "Pilihan Anda (1-4) : ";
                 cin >> pilihan_menu_hotel;
 
@@ -204,7 +204,7 @@ loop_start:
                 cout << "1. Daftar Harga\n";    // ini buat if == 1
                 cout << "2. Fasilitas Kamar\n"; // else if == 2
                 cout << "3. Alamat Hotel\n";    // else if == 3
-                cout << "4. kembali Ke Menu Awal\n";
+                cout << "4. kembali Ke Menu Awal\n"; //else if == 4
                 cout << "Pilihan Anda (1-4) : ";
                 cin >> pilihan_menu_hotel;
 
@@ -372,7 +372,7 @@ loop_start:
             cout << "Masukan Pilihan : ";
             cin >> pilihan_hotel;
 
-            // Pilihan Hotel Le Estate dan terus pemilihan jenis kamar
+            // Pilihan Hotel Le Estate dan pemilihan jenis kamar
             if (pilihan_hotel == 1)
             {
                 cout << "Hotel : " << hotel_1 << "\n";
@@ -391,9 +391,9 @@ loop_start:
                 int pilihan_kamar;
 
                 cout << "Jenis Kamar\n";
-                cout << "1. " + jenis_1 << "\n"
-                     << "2. " + jenis_2 << "\n"
-                     << "3. " + jenis_3 << "\n";
+                cout << "1. " + jenis_1 << "\n" // if == 1
+                     << "2. " + jenis_2 << "\n" // else if == 2
+                     << "3. " + jenis_3 << "\n"; // else if == 3
                 cout << "Masukan Pilihan : ";
                 cin >> pilihan_kamar;
 
@@ -1136,7 +1136,6 @@ loop_start:
                 }
                 else if (pilihan_kamar == 2)
                 {
-
                     cout << "Kamar : " << jenis_2 << endl;
                 loop_inap_3_2:
                     int jumlah_kamar = 10;

@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// Struktur data untuk menyimpan data inventaris sepatu
 struct Shoe
 {
     int stock;
@@ -12,6 +13,7 @@ struct Shoe
 
 const int MAX_INVENTORY_SIZE = 100;
 
+// Fungsi untuk menambahkan data ke inventory
 void addShoe(Shoe inventory[], int &count, int stock, string jenis, string brand)
 {
     if (count >= MAX_INVENTORY_SIZE)
@@ -27,10 +29,9 @@ void addShoe(Shoe inventory[], int &count, int stock, string jenis, string brand
 
     inventory[count] = newShoe;
     count++;
-
-    // cout << "Sepatu berhasil ditambahkan ke inventaris." << endl;
 }
 
+// Fungsi untuk mencetak data yang ada di inventaris
 void printInventory(const Shoe inventory[], int count)
 {
     if (count == 0)
@@ -44,12 +45,13 @@ void printInventory(const Shoe inventory[], int count)
     {
         cout << "Sepatu " << i + 1 << ":" << endl;
         cout << "Stock: " << inventory[i].stock << endl;
-        cout << "Warna: " << inventory[i].jenis << endl;
+        cout << "Jenis: " << inventory[i].jenis << endl;
         cout << "Merek: " << inventory[i].brand << endl;
         cout << endl;
     }
 }
 
+// Fungsi untuk menghapus data yang ada di inventory sesuai dengan merk
 void removeShoe(Shoe inventory[], int &count, const string &brand)
 {
     int index = -1;
@@ -84,7 +86,6 @@ struct Transaction
     string date;
     string merk;
     int quantity;
-    // Tambahkan atribut lain sesuai kebutuhan
     Transaction *next;
 };
 
@@ -110,8 +111,6 @@ void addTransaction(Transaction *&head, const string &date, const string &merk, 
         }
         current->next = newTransaction;
     }
-
-    // cout << "Transaksi berhasil ditambahkan." << endl;
 }
 
 // Fungsi untuk mencetak riwayat transaksi
@@ -128,7 +127,7 @@ void printTransactionHistory(const Transaction *head)
     while (current != nullptr)
     {
         cout << "Tanggal: " << current->date << endl;
-        cout << "Jenis: " << current->merk << endl;
+        cout << "Merek: " << current->merk << endl;
         cout << "Jumlah: " << current->quantity << endl;
         current = current->next;
     }
@@ -156,7 +155,6 @@ struct Order
     string phoneNumber;
     string orderedItem;
     int quantity;
-    // Tambahkan atribut lain sesuai kebutuhan
     Order *next;
 };
 
@@ -169,13 +167,27 @@ void pushOrder(Order *&top, const string &customerName, const string &address, c
     newOrder->phoneNumber = phoneNumber;
     newOrder->orderedItem = orderedItem;
     newOrder->quantity = quantity;
-    newOrder->next = top;
-    top = newOrder;
+    newOrder->next = nullptr; // Atur pointer next ke nullptr
 
-    // cout << "Pesanan berhasil ditambahkan." << endl;
+    // Jika stack kosong, tambahkan pesanan sebagai pesanan pertama
+    if (top == nullptr)
+    {
+        top = newOrder;
+        return;
+    }
+
+    // Cari posisi pesanan terakhir
+    Order *current = top;
+    while (current->next != nullptr)
+    {
+        current = current->next;
+    }
+
+    // Tambahkan pesanan baru sebagai pesanan terakhir
+    current->next = newOrder;
 }
 
-// Fungsi untuk menghapus pesanan teratas dari stack
+// Fungsi untuk menghapus pesanan yang terakhir masuk
 void popOrder(Order *&top)
 {
     if (top == nullptr)
@@ -205,16 +217,32 @@ void printOrders(const Order *top)
     int i = 1;
     while (current != nullptr)
     {
+        cout << endl;
         cout << "Pemesan ke- " << i << endl;
         cout << "Nama Pelanggan: " << current->customerName << endl;
         cout << "Alamat: " << current->address << endl;
         cout << "Nomor Telepon: " << current->phoneNumber << endl;
         cout << "Barang Dipesan: " << current->orderedItem << endl;
         cout << "Jumlah: " << current->quantity << endl;
-        cout << endl;
         current = current->next;
         i++;
     }
+}
+
+// Fungsi untuk menghapus pesanan pertama dari stack
+void popFirstOrder(Order *&top)
+{
+    if (top == nullptr)
+    {
+        cout << "Stack pesanan kosong." << endl;
+        return;
+    }
+
+    Order *temp = top;
+    top = top->next;
+    delete temp;
+
+    cout << "Pesanan pertama berhasil dihapus." << endl;
 }
 
 // Struktur data untuk menyimpan informasi pelanggan
@@ -246,8 +274,6 @@ void enqueueCustomer(Customer *&front, Customer *&rear, const string &name, cons
         rear->next = newCustomer;
         rear = newCustomer;
     }
-
-    // cout << "Pelanggan " << name << " berhasil ditambahkan ke daftar tunggu." << endl;
 }
 
 // Fungsi untuk menghapus pelanggan terdepan dari queue
@@ -282,14 +308,17 @@ void printWaitingList(const Customer *front)
 
     cout << "Daftar Tunggu:" << endl;
     const Customer *current = front;
+    int i=1;
     while (current != nullptr)
     {
+        cout << endl;
+        cout << "Nomor Antrian: " << i << endl;
         cout << "Nama Pelanggan: " << current->name << endl;
         cout << "Alamat: " << current->address << endl;
         cout << "Nomor Telepon: " << current->phoneNumber << endl;
         cout << "Waktu Kedatangan: " << current->arrivalTime << endl;
-        cout << endl;
         current = current->next;
+        i++;
     }
 }
 
@@ -321,8 +350,9 @@ int main()
     addTransaction(transactionHistory, "2023-05-28", "Adidas", 1);
 
     // Menambahkan data dummy ke stack
-    pushOrder(currentOrders, "Dio", "Jl Bunga, Juang", "555-1234", "Nike", 2);
-    pushOrder(currentOrders, "Jingga", "12 Perum Indah", "555-5678", "Adidas", 1);
+    pushOrder(currentOrders, "Dio", "123 Main St", "123456789", "Sepatu Merah", 2);
+    pushOrder(currentOrders, "Jean", "456 Elm St", "987654321", "Sepatu Biru", 1);
+    pushOrder(currentOrders, "David", "789 Oak St", "555555555", "Sepatu Hitam", 3);
 
     // Menambahkan data dummy ke queue
     enqueueCustomer(front, rear, "Alex", "789 Oak St", "555-9012", "09:30 AM");
@@ -338,6 +368,7 @@ loop_menu_awal:
     cout << "0. Keluar" << endl;
     cout << "Masukan Pilihan Anda: ";
     cin >> choice;
+    cout << endl;
     switch (choice)
     {
     case 1:
@@ -345,7 +376,6 @@ loop_menu_awal:
         int choice;
         do
         {
-            cout << endl;
             cout << "=== Manajemen Inventaris Toko ===" << endl;
             cout << "1. Tambahkan sepatu" << endl;
             cout << "2. Hapus sepatu" << endl;
@@ -353,6 +383,7 @@ loop_menu_awal:
             cout << "0. Keluar" << endl;
             cout << "Pilihan Anda: ";
             cin >> choice;
+            cout << endl;
 
             switch (choice)
             {
@@ -368,7 +399,7 @@ loop_menu_awal:
                 cin >> brand;
 
                 addShoe(inventory, shoeCount, stock, jenis, brand);
-                cout << "Sepatu berhasil ditambahkan ke inventaris." << endl;
+                cout << "Sepatu berhasil ditambahkan ke inventaris." << endl << endl;
                 break;
             }
             case 2:
@@ -384,9 +415,8 @@ loop_menu_awal:
                 printInventory(inventory, shoeCount);
                 break;
             case 0:
-                cout << "Keluar" << endl;
+                cout << "Keluar" << endl << endl;
                 goto loop_menu_awal;
-                cout << endl;
                 break;
             default:
                 cout << "Pilihan tidak valid. Silakan pilih lagi." << endl;
@@ -399,7 +429,6 @@ loop_menu_awal:
         int choice;
         do
         {
-            cout << endl;
             cout << "=== Manajemen Riwayat Transaksi ===" << endl;
             cout << "1. Tambahkan transaksi" << endl;
             cout << "2. Tampilkan riwayat transaksi" << endl;
@@ -407,6 +436,7 @@ loop_menu_awal:
             cout << "0. Keluar" << endl;
             cout << "Pilih menu: ";
             cin >> choice;
+            cout << endl;
 
             switch (choice)
             {
@@ -414,7 +444,7 @@ loop_menu_awal:
             {
                 string date, merk;
                 int quantity;
-                cout << "Tanggal: ";
+                cout << "Tanggal (DD-MM-YYYY): ";
                 cin >> date;
                 cout << "Merk: ";
                 cin >> merk;
@@ -449,17 +479,18 @@ loop_menu_awal:
         int choice;
         do
         {
-            cout << endl;
-            cout << "=== Manajemen Pesanan Saat Ini ===" << endl;
-            cout << "1. Tambahkan pesanan" << endl;
-            cout << "2. Hapus pesanan teratas" << endl;
-            cout << "3. Tampilkan pesanan-pesanan saat ini" << endl;
-            cout << "0. Keluar" << endl;
-            cout << "Pilih menu: ";
-            cin >> choice;
+ cout << endl;
+        cout << "=== Manajemen Pesanan Saat Ini ===" << endl;
+        cout << "1. Tambahkan pesanan" << endl;
+        cout << "2. Hapus pesanan teratas" << endl;
+        cout << "3. Hapus pesanan pertama" << endl;
+        cout << "4. Tampilkan pesanan-pesanan saat ini" << endl;
+        cout << "0. Keluar" << endl;
+        cout << "Pilih menu: ";
+        cin >> choice;
 
-            switch (choice)
-            {
+        switch (choice)
+        {
             case 1:
             {
                 string customerName, address, phoneNumber, orderedItem;
@@ -483,12 +514,13 @@ loop_menu_awal:
                 popOrder(currentOrders);
                 break;
             case 3:
+                popFirstOrder(currentOrders);
+                break;
+            case 4:
                 printOrders(currentOrders);
                 break;
             case 0:
                 cout << "Keluar" << endl;
-                goto loop_menu_awal;
-                cout << endl;
                 break;
             default:
                 cout << "Pilihan tidak valid." << endl;
@@ -503,14 +535,14 @@ loop_menu_awal:
         int choice;
         do
         {
-            cout << endl;
             cout << "=== Manajemen Daftar Tunggu ===" << endl;
             cout << "1. Tambahkan pelanggan ke daftar tunggu" << endl;
-            cout << "2. Hapus pelanggan terdepan dari daftar tunggu" << endl;
+            cout << "2. Hapus pelanggan dari nomor antrian terawal" << endl;
             cout << "3. Tampilkan daftar tunggu" << endl;
             cout << "0. Keluar" << endl;
             cout << "Pilih menu: ";
             cin >> choice;
+            cout << endl;
 
             switch (choice)
             {
@@ -538,8 +570,8 @@ loop_menu_awal:
                 break;
             case 0:
                 cout << "Keluar" << endl;
-                goto loop_menu_awal;
                 cout << endl;
+                goto loop_menu_awal;
                 break;
             default:
                 cout << "Pilihan tidak valid." << endl;

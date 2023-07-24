@@ -13,7 +13,6 @@ struct Shoe
 
 const int MAX_INVENTORY_SIZE = 100;
 
-// Fungsi untuk menambahkan data ke inventory
 void addShoe(Shoe inventory[], int &count, int stock, string jenis, string brand)
 {
     if (count >= MAX_INVENTORY_SIZE)
@@ -29,9 +28,10 @@ void addShoe(Shoe inventory[], int &count, int stock, string jenis, string brand
 
     inventory[count] = newShoe;
     count++;
+
+    // cout << "Sepatu berhasil ditambahkan ke inventaris." << endl;
 }
 
-// Fungsi untuk mencetak data yang ada di inventaris
 void printInventory(const Shoe inventory[], int count)
 {
     if (count == 0)
@@ -45,13 +45,12 @@ void printInventory(const Shoe inventory[], int count)
     {
         cout << "Sepatu " << i + 1 << ":" << endl;
         cout << "Stock: " << inventory[i].stock << endl;
-        cout << "Jenis: " << inventory[i].jenis << endl;
+        cout << "Warna: " << inventory[i].jenis << endl;
         cout << "Merek: " << inventory[i].brand << endl;
         cout << endl;
     }
 }
 
-// Fungsi untuk menghapus data yang ada di inventory sesuai dengan merk
 void removeShoe(Shoe inventory[], int &count, const string &brand)
 {
     int index = -1;
@@ -86,6 +85,7 @@ struct Transaction
     string date;
     string merk;
     int quantity;
+    // Tambahkan atribut lain sesuai kebutuhan
     Transaction *next;
 };
 
@@ -111,6 +111,8 @@ void addTransaction(Transaction *&head, const string &date, const string &merk, 
         }
         current->next = newTransaction;
     }
+
+    // cout << "Transaksi berhasil ditambahkan." << endl;
 }
 
 // Fungsi untuk mencetak riwayat transaksi
@@ -127,7 +129,7 @@ void printTransactionHistory(const Transaction *head)
     while (current != nullptr)
     {
         cout << "Tanggal: " << current->date << endl;
-        cout << "Merek: " << current->merk << endl;
+        cout << "Jenis: " << current->merk << endl;
         cout << "Jumlah: " << current->quantity << endl;
         current = current->next;
     }
@@ -167,27 +169,13 @@ void pushOrder(Order *&top, const string &customerName, const string &address, c
     newOrder->phoneNumber = phoneNumber;
     newOrder->orderedItem = orderedItem;
     newOrder->quantity = quantity;
-    newOrder->next = nullptr; // Atur pointer next ke nullptr
+    newOrder->next = top;
+    top = newOrder;
 
-    // Jika stack kosong, tambahkan pesanan sebagai pesanan pertama
-    if (top == nullptr)
-    {
-        top = newOrder;
-        return;
-    }
-
-    // Cari posisi pesanan terakhir
-    Order *current = top;
-    while (current->next != nullptr)
-    {
-        current = current->next;
-    }
-
-    // Tambahkan pesanan baru sebagai pesanan terakhir
-    current->next = newOrder;
+    // cout << "Pesanan berhasil ditambahkan." << endl;
 }
 
-// Fungsi untuk menghapus pesanan yang terakhir masuk
+// Fungsi untuk menghapus pesanan teratas dari stack
 void popOrder(Order *&top)
 {
     if (top == nullptr)
@@ -217,32 +205,16 @@ void printOrders(const Order *top)
     int i = 1;
     while (current != nullptr)
     {
-        cout << endl;
         cout << "Pemesan ke- " << i << endl;
         cout << "Nama Pelanggan: " << current->customerName << endl;
         cout << "Alamat: " << current->address << endl;
         cout << "Nomor Telepon: " << current->phoneNumber << endl;
         cout << "Barang Dipesan: " << current->orderedItem << endl;
         cout << "Jumlah: " << current->quantity << endl;
+        cout << endl;
         current = current->next;
         i++;
     }
-}
-
-// Fungsi untuk menghapus pesanan pertama dari stack
-void popFirstOrder(Order *&top)
-{
-    if (top == nullptr)
-    {
-        cout << "Stack pesanan kosong." << endl;
-        return;
-    }
-
-    Order *temp = top;
-    top = top->next;
-    delete temp;
-
-    cout << "Pesanan pertama berhasil dihapus." << endl;
 }
 
 // Struktur data untuk menyimpan informasi pelanggan
@@ -274,6 +246,8 @@ void enqueueCustomer(Customer *&front, Customer *&rear, const string &name, cons
         rear->next = newCustomer;
         rear = newCustomer;
     }
+
+    // cout << "Pelanggan " << name << " berhasil ditambahkan ke daftar tunggu." << endl;
 }
 
 // Fungsi untuk menghapus pelanggan terdepan dari queue
@@ -308,18 +282,83 @@ void printWaitingList(const Customer *front)
 
     cout << "Daftar Tunggu:" << endl;
     const Customer *current = front;
-    int i=1;
     while (current != nullptr)
     {
-        cout << endl;
-        cout << "Nomor Antrian: " << i << endl;
         cout << "Nama Pelanggan: " << current->name << endl;
         cout << "Alamat: " << current->address << endl;
         cout << "Nomor Telepon: " << current->phoneNumber << endl;
         cout << "Waktu Kedatangan: " << current->arrivalTime << endl;
+        cout << endl;
         current = current->next;
-        i++;
     }
+}
+
+// Tree
+struct Node
+{
+    string brand;
+    int harga;
+    string jenis;
+    Node *left;
+    Node *right;
+};
+
+Node *createNode(string brand, int harga, string jenis)
+{
+    Node *newNode = new Node();
+    newNode->brand = brand;
+    newNode->harga = harga;
+    newNode->jenis = jenis;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+void addLeftChild(Node *parent, Node *child)
+{
+    parent->left = child;
+}
+
+void addRightChild(Node *parent, Node *child)
+{
+    parent->right = child;
+}
+
+void displayNode(Node *node, string position)
+{
+    cout << position << endl;
+    cout << "Brand: " << node->brand << endl;
+    cout << "Harga: " << node->harga << endl;
+    cout << "Jenis: " << node->jenis << endl;
+    cout << endl;
+}
+
+void displayTree(Node *root, string position = "")
+{
+    if (root != NULL)
+    {
+        displayTree(root->left, "Kiri");
+        if (position != "")
+            displayNode(root, position);
+        else
+            displayNode(root, "Root");
+        displayTree(root->right, "Pria");
+    }
+}
+
+Node *findNode(Node *root, string brand)
+{
+    if (root == NULL || root->brand == brand)
+    {
+        return root;
+    }
+    Node *leftResult = findNode(root->left, brand);
+    if (leftResult != NULL)
+    {
+        return leftResult;
+    }
+    Node *rightResult = findNode(root->right, brand);
+    return rightResult;
 }
 
 int main()
@@ -350,9 +389,8 @@ int main()
     addTransaction(transactionHistory, "2023-05-28", "Adidas", 1);
 
     // Menambahkan data dummy ke stack
-    pushOrder(currentOrders, "Dio", "123 Main St", "123456789", "Sepatu Merah", 2);
-    pushOrder(currentOrders, "Jean", "456 Elm St", "987654321", "Sepatu Biru", 1);
-    pushOrder(currentOrders, "David", "789 Oak St", "555555555", "Sepatu Hitam", 3);
+    pushOrder(currentOrders, "Dio", "Jl Bunga, Juang", "555-1234", "Nike", 2);
+    pushOrder(currentOrders, "Jingga", "12 Perum Indah", "555-5678", "Adidas", 1);
 
     // Menambahkan data dummy ke queue
     enqueueCustomer(front, rear, "Alex", "789 Oak St", "555-9012", "09:30 AM");
@@ -365,10 +403,10 @@ loop_menu_awal:
     cout << "2. Riwayat Transaksi" << endl;
     cout << "3. Pesanan Pelanggan" << endl;
     cout << "4. Daftar Tunggu" << endl;
+    cout << "5. Daftar Jenis Sepatu" << endl;
     cout << "0. Keluar" << endl;
     cout << "Masukan Pilihan Anda: ";
     cin >> choice;
-    cout << endl;
     switch (choice)
     {
     case 1:
@@ -376,6 +414,7 @@ loop_menu_awal:
         int choice;
         do
         {
+            cout << endl;
             cout << "=== Manajemen Inventaris Toko ===" << endl;
             cout << "1. Tambahkan sepatu" << endl;
             cout << "2. Hapus sepatu" << endl;
@@ -383,7 +422,6 @@ loop_menu_awal:
             cout << "0. Keluar" << endl;
             cout << "Pilihan Anda: ";
             cin >> choice;
-            cout << endl;
 
             switch (choice)
             {
@@ -399,7 +437,7 @@ loop_menu_awal:
                 cin >> brand;
 
                 addShoe(inventory, shoeCount, stock, jenis, brand);
-                cout << "Sepatu berhasil ditambahkan ke inventaris." << endl << endl;
+                cout << "Sepatu berhasil ditambahkan ke inventaris." << endl;
                 break;
             }
             case 2:
@@ -415,8 +453,9 @@ loop_menu_awal:
                 printInventory(inventory, shoeCount);
                 break;
             case 0:
-                cout << "Keluar" << endl << endl;
+                cout << "Keluar" << endl;
                 goto loop_menu_awal;
+                cout << endl;
                 break;
             default:
                 cout << "Pilihan tidak valid. Silakan pilih lagi." << endl;
@@ -429,6 +468,7 @@ loop_menu_awal:
         int choice;
         do
         {
+            cout << endl;
             cout << "=== Manajemen Riwayat Transaksi ===" << endl;
             cout << "1. Tambahkan transaksi" << endl;
             cout << "2. Tampilkan riwayat transaksi" << endl;
@@ -436,7 +476,6 @@ loop_menu_awal:
             cout << "0. Keluar" << endl;
             cout << "Pilih menu: ";
             cin >> choice;
-            cout << endl;
 
             switch (choice)
             {
@@ -444,7 +483,7 @@ loop_menu_awal:
             {
                 string date, merk;
                 int quantity;
-                cout << "Tanggal (DD-MM-YYYY): ";
+                cout << "Tanggal: ";
                 cin >> date;
                 cout << "Merk: ";
                 cin >> merk;
@@ -479,18 +518,17 @@ loop_menu_awal:
         int choice;
         do
         {
- cout << endl;
-        cout << "=== Manajemen Pesanan Saat Ini ===" << endl;
-        cout << "1. Tambahkan pesanan" << endl;
-        cout << "2. Hapus pesanan teratas" << endl;
-        cout << "3. Hapus pesanan pertama" << endl;
-        cout << "4. Tampilkan pesanan-pesanan saat ini" << endl;
-        cout << "0. Keluar" << endl;
-        cout << "Pilih menu: ";
-        cin >> choice;
+            cout << endl;
+            cout << "=== Manajemen Pesanan Saat Ini ===" << endl;
+            cout << "1. Tambahkan pesanan" << endl;
+            cout << "2. Hapus pesanan teratas" << endl;
+            cout << "3. Tampilkan pesanan-pesanan saat ini" << endl;
+            cout << "0. Keluar" << endl;
+            cout << "Pilih menu: ";
+            cin >> choice;
 
-        switch (choice)
-        {
+            switch (choice)
+            {
             case 1:
             {
                 string customerName, address, phoneNumber, orderedItem;
@@ -514,13 +552,12 @@ loop_menu_awal:
                 popOrder(currentOrders);
                 break;
             case 3:
-                popFirstOrder(currentOrders);
-                break;
-            case 4:
                 printOrders(currentOrders);
                 break;
             case 0:
                 cout << "Keluar" << endl;
+                goto loop_menu_awal;
+                cout << endl;
                 break;
             default:
                 cout << "Pilihan tidak valid." << endl;
@@ -535,14 +572,14 @@ loop_menu_awal:
         int choice;
         do
         {
+            cout << endl;
             cout << "=== Manajemen Daftar Tunggu ===" << endl;
             cout << "1. Tambahkan pelanggan ke daftar tunggu" << endl;
-            cout << "2. Hapus pelanggan dari nomor antrian terawal" << endl;
+            cout << "2. Hapus pelanggan terdepan dari daftar tunggu" << endl;
             cout << "3. Tampilkan daftar tunggu" << endl;
             cout << "0. Keluar" << endl;
             cout << "Pilih menu: ";
             cin >> choice;
-            cout << endl;
 
             switch (choice)
             {
@@ -570,8 +607,8 @@ loop_menu_awal:
                 break;
             case 0:
                 cout << "Keluar" << endl;
-                cout << endl;
                 goto loop_menu_awal;
+                cout << endl;
                 break;
             default:
                 cout << "Pilihan tidak valid." << endl;
@@ -581,6 +618,119 @@ loop_menu_awal:
         } while (choice != 0);
 
         break;
+    }
+    case 5:
+    {
+        Node *root = NULL;
+        int choice;
+
+        do
+        {
+            cout << "Menu:" << endl;
+            cout << "1. Tambahkan Root Node" << endl;
+            cout << "2. Tambahkan Child Node" << endl;
+            cout << "3. Tampilkan Tree" << endl;
+            cout << "4. Keluar" << endl;
+            cout << "Pilihan Anda: ";
+            cin >> choice;
+
+            switch (choice)
+            {
+            case 1:
+            {
+                if (root == NULL)
+                {
+                    string brand, jenis;
+                    int harga;
+                    cout << "\nMasukkan informasi Root Node:" << endl;
+                    cout << "Brand: ";
+                    cin >> brand;
+                    cout << "Harga: ";
+                    cin >> harga;
+                    cout << "Jenis: ";
+                    cin >> jenis;
+                    root = createNode(brand, harga, jenis);
+                    cout << "Root Node berhasil ditambahkan!" << endl;
+                }
+                else
+                {
+                    cout << "Root Node sudah ada!" << endl;
+                }
+                break;
+            }
+            case 2:
+            {
+                if (root != NULL)
+                {
+                    string brand, jenis, parentBrand;
+                    int harga;
+                    cout << "\nMasukkan informasi Child Node:" << endl;
+                    cout << "Brand: ";
+                    cin >> brand;
+                    cout << "Harga: ";
+                    cin >> harga;
+                    cout << "Jenis: ";
+                    cin >> jenis;
+                    cout << "Brand Parent Node: ";
+                    cin >> parentBrand;
+                    Node *parentNode = findNode(root, parentBrand);
+                    if (parentNode != NULL)
+                    {
+                        Node *childNode = createNode(brand, harga, jenis);
+                        string childPosition;
+                        cout << "Posisi Child Node (left/right): ";
+                        cin >> childPosition;
+                        if (childPosition == "left")
+                        {
+                            addLeftChild(parentNode, childNode);
+                            cout << "Child Node berhasil ditambahkan sebagai left child dari " << parentBrand << "!" << endl;
+                        }
+                        else if (childPosition == "right")
+                        {
+                            addRightChild(parentNode, childNode);
+                            cout << "Child Node berhasil ditambahkan sebagai right child dari " << parentBrand << "!" << endl;
+                        }
+                        else
+                        {
+                            cout << "Posisi yang dimasukkan tidak valid!" << endl;
+                        }
+                    }
+                    else
+                    {
+                        cout << "Parent Node dengan brand " << parentBrand << " tidak ditemukan!" << endl;
+                    }
+                }
+                else
+                {
+                    cout << "Tambahkan Root Node terlebih dahulu!" << endl;
+                }
+                break;
+            }
+            case 3:
+            {
+                if (root != NULL)
+                {
+                    cout << "\nTree:" << endl;
+                    displayTree(root);
+                }
+                else
+                {
+                    cout << "Tree kosong!" << endl;
+                }
+                break;
+            }
+            case 4:
+            {
+                cout << "Terima kasih!" << endl;
+                break;
+            }
+            default:
+                cout << "Pilihan tidak valid!" << endl;
+            }
+
+            cout << endl;
+
+        } while (choice != 4);
     }
     case 0:
         return 0;
